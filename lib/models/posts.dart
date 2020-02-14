@@ -14,7 +14,7 @@ class Posts with ChangeNotifier {
     @required this.des,
     @required this.imageUrl,
     @required this.replay,
-    this.visibil = false,
+    this.visibil = true,
   });
 
 }
