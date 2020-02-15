@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-class HomeScreen extends StatelessWidget {
+class PostScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text('home'),
+      child: Text('posts Screen'),
     );
   }
 }

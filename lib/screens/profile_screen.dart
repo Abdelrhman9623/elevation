@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-class HomeScreen extends StatelessWidget {
+class ProfileScreen extends StatelessWidget {
+  static const routeName = '/profile';
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text('home'),
+      child: Text('profile'),
     );
   }
 }
