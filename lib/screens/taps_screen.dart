@@ -1,24 +1,30 @@
 import 'package:flutter/material.dart';
+// import 'package:flutter_localizations/flutter_localizations.dart';
+import '../locale/locales.dart';
+import '../locale/helperLocale.dart';
 import '../screens/home_screen.dart';
 import '../screens/about_screen.dart';
 import '../screens/posts_screen.dart';
 import '../screens/profile_screen.dart';
 class TapsScreen extends StatefulWidget {
+  SpecificLocalizationDelegate specificLocaliztionDelegate;
+  TapsScreen(this.specificLocaliztionDelegate);
   @override
   _TapsScreenState createState() => _TapsScreenState();
 }
 
 class _TapsScreenState extends State<TapsScreen> {
     List<Map<String, Object>> _page;
-  int _selectPageIndex = 0;
+    int _selectPageIndex = 0;
+    
 
   @override
   void initState() {
     _page = [
       { 'pages': HomeScreen(), },
-      { 'pages': AboutScreen() },
-      { 'pages': PostScreen() },
-      { 'pages': ProfileScreen() },
+      { 'pages': AboutScreen(), },
+      { 'pages': PostScreen(), },
+      { 'pages': ProfileScreen(), },
     ];
     super.initState();
   }
@@ -28,38 +34,44 @@ class _TapsScreenState extends State<TapsScreen> {
       _selectPageIndex = i;
     });
   }
+  onLocaleChange(Locale local) {
+    setState(() {
+      widget.specificLocaliztionDelegate = SpecificLocalizationDelegate(local);
+    });
+  }
   @override
   Widget build(BuildContext context) {
-        Future<void> _copyRight() async {
-    return showDialog(
-      context: context,
-      builder: (ctx) => AlertDialog(
-        // backgroundColor: Colors.green[50].withOpacity(0.4),
-        title: Center(child: Text('Copyright')),
-        content: Container(
-          // padding: const EdgeInsets.all(8),
-          child: Text(
-            'Hey Whats up ! My Name is Abdelrhman Mohammed E-mail abdelrhman4mohammed@gmail.com, Number: +201012982096',
-            style: TextStyle( fontWeight: FontWeight.bold, color: Colors.brown),
-            textAlign: TextAlign.center,
-          ),
-        ),
-        actions: <Widget>[
-          FlatButton(
+    Future<void> _copyRight() async {
+      return showDialog(
+        context: context,
+        builder: (ctx) => AlertDialog(
+          // backgroundColor: Colors.green[50].withOpacity(0.4),
+          title: Center(child: Text('Copyright')),
+          content: Container(
+            // padding: const EdgeInsets.all(8),
             child: Text(
-              'Close', 
-              style: TextStyle(
-                color: Theme.of(context).errorColor ), 
+              'Hey Whats up ! My Name is Abdelrhman Mohammed E-mail abdelrhman4mohammed@gmail.com, Number: +201012982096',
+              style: TextStyle( fontWeight: FontWeight.bold, color: Colors.brown),
               textAlign: TextAlign.center,
             ),
-            onPressed: () {
-              Navigator.of(ctx).pop();
-            },
           ),
-        ],
-      )
-    );
-  }
+          actions: <Widget>[
+            FlatButton(
+              child: Text(
+                'Close', 
+                style: TextStyle(
+                  color: Theme.of(context).errorColor ), 
+                textAlign: TextAlign.center,
+              ),
+              onPressed: () {
+                Navigator.of(ctx).pop();
+              },
+            ),
+          ],
+        )
+      );
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: Text('ELEVATION OF US'),
@@ -90,7 +102,11 @@ class _TapsScreenState extends State<TapsScreen> {
                       Text('Arabic')
                     ],
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                      this.setState((){
+                      helper.onLocaleChanged(new Locale("en"));
+                    });
+                  },
                 ),
                 // value: ,
               ),
@@ -113,7 +129,11 @@ class _TapsScreenState extends State<TapsScreen> {
                       Text('English')
                     ],
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    this.setState((){
+                      helper.onLocaleChanged(new Locale("ar"));
+                    });
+                  },
                 ),
                 // value: ,
               ),

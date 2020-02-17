@@ -1,0 +1,33 @@
+{
+  "@@last_modified": "2020-02-17T02:25:37.948077",
+  "title": "Home",
+  "@title": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "btnsubmit": "Submit",
+  "@btnsubmit": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "locale": "en",
+  "@locale": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "lblname": "Name",
+  "@lblname": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "lblphone": "Phone",
+  "@lblphone": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "lblemail": "Email",
+  "@lblemail": {
+    "type": "text",
+    "placeholders": {}
+  }
+}
