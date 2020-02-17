@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
+// import 'package:flutter/services.dart';
+import './providers/lang.dart';
 import './locale/locales.dart';
 import './screens/taps_screen.dart';
 
@@ -14,42 +16,38 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
 
-   SpecificLocalizationDelegate  specificLocaliztionDelegate;
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    specificLocaliztionDelegate = SpecificLocalizationDelegate(new Locale("en"));
-  }
-
-  onLocaleChange(Locale local) {
-    setState(() {
-      specificLocaliztionDelegate = SpecificLocalizationDelegate(local);
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      localizationsDelegates: [
-        // AppLocalizationsDelegate(),
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        specificLocaliztionDelegate
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider.value(
+          value: Lang(),
+        )
       ],
-      supportedLocales: [
-        Locale('ar', ""),
-        Locale('en', ""),
-      ],
-      locale: specificLocaliztionDelegate.overriddenLocale,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-         primarySwatch: Colors.green,
+      child: Consumer<Lang>(
+        builder: (ctx, lang, _) => MaterialApp(
+          localizationsDelegates: [
+            // AppLocalizationsDelegate(),
+            const TranslationsDelegate(),
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+          ],
+          supportedLocales: [
+           const Locale('ar', ""),
+           const Locale('en', ""),
+          ],
+          locale: lang.appLocal,
+          debugShowCheckedModeBanner: false,
+          title: 'Flutter Demo',
+          theme: ThemeData(
+            primarySwatch: Colors.green,
+          ),
+          home: TapsScreen(),
+          // routes: {
+          //   ProfileScreen.routeName: (ctx) => ProfileScreen(),
+          // },
+        ),
       ),
-      home: TapsScreen(specificLocaliztionDelegate),
-      // routes: {
-      //   ProfileScreen.routeName: (ctx) => ProfileScreen(),
-      // },
     );
   }
 }

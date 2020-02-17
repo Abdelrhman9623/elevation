@@ -7,82 +7,120 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../l10n/messages_all.dart';
 
-class AppLocalizations {
-  static AppLocalizations of(BuildContext context) {
-    return Localizations.of<AppLocalizations>(context, AppLocalizations);
-  }
 
-  static Future<AppLocalizations> load(Locale locale) {
+class Translations {
+  static Future<Translations> load(Locale locale) {
     final String name =
-        locale.countryCode == null ? locale.languageCode : locale.toString();
+        (locale.countryCode != null && locale.countryCode.isEmpty)
+            ? locale.languageCode
+            : locale.toString();
     final String localeName = Intl.canonicalizedLocale(name);
 
-    return initializeMessages(localeName).then((bool _) {
+    return initializeMessages(localeName).then((dynamic _) {
       Intl.defaultLocale = localeName;
-      return new AppLocalizations();
+      return new Translations();
     });
   }
- 
+
+  static Translations of(BuildContext context) {
+    return Localizations.of<Translations>(context, Translations);
+  }
 
   String get title {
-    return Intl.message('Home', name: 'title');
+    return Intl.message(
+      'Home',
+      name: 'title',
+    );
   }
 
-  String get btnsubmit {
-    return Intl.message('Submit', name: 'btnsubmit');
+  String get username {
+    return Intl.message(
+      'Username',
+      name: 'username',
+    );
   }
 
-  String get locale {
-    return Intl.message('en', name: 'locale');
+  String get not_valid_username {
+    return Intl.message(
+      'Not Valid Username',
+      name: 'not_valid_username',
+    );
   }
 
-  String get lblname {
-    return Intl.message('Name', name: 'lblname');
+  String get password {
+    return Intl.message(
+      'password',
+      name: 'password',
+    );
   }
 
-  String get lblphone {
-    return Intl.message('Phone', name: 'lblphone');
+  String get password_is_too_short {
+    return Intl.message(
+      'password is too short',
+      name: 'password_is_too_short',
+    );
   }
 
-  String get lblemail {
-    return Intl.message('Email', name: 'lblemail');
+  String get login {
+    return Intl.message(
+      'Login',
+      name: 'login',
+    );
+  }
+
+  String get language {
+    return Intl.message(
+      'عربي',
+      name: 'language',
+    );
+  }
+
+  String get links {
+    return Intl.message(
+      'Links',
+      name: 'links',
+    );
+  }
+
+  String get contacts {
+    return Intl.message(
+      'Contacts',
+      name: 'contacts',
+    );
+  }
+
+  String get attendance {
+    return Intl.message(
+      'Attendance',
+      name: 'attendance',
+    );
+  }
+
+  String get support {
+    return Intl.message(
+      'Support',
+      name: 'support',
+    );
+  }
+
+  String get profile {
+    return Intl.message(
+      'Profile',
+      name: 'profile',
+    );
   }
 }
 
-class SpecificLocalizationDelegate
-    extends LocalizationsDelegate<AppLocalizations> {
-  final Locale overriddenLocale;
 
-  SpecificLocalizationDelegate(this.overriddenLocale);
-
-  @override
-  bool isSupported(Locale locale) => overriddenLocale != null;
-
-  @override
-  Future<AppLocalizations> load(Locale locale) =>
-      AppLocalizations.load(overriddenLocale);
-
-  @override
-  bool shouldReload(LocalizationsDelegate<AppLocalizations> old) => true;
-}
-
-class FallbackCupertinoLocalisationsDelegate extends LocalizationsDelegate<CupertinoLocalizations> {
-  const FallbackCupertinoLocalisationsDelegate();
+class TranslationsDelegate extends LocalizationsDelegate<Translations> {
+  const TranslationsDelegate();
 
   @override
   bool isSupported(Locale locale) => ['en', 'ar'].contains(locale.languageCode);
 
   @override
-  Future<CupertinoLocalizations> load(Locale locale) => SynchronousFuture<_DefaultCupertinoLocalizations>(_DefaultCupertinoLocalizations(locale));
+  Future<Translations> load(Locale locale) => Translations.load(locale);
 
   @override
-  bool shouldReload(FallbackCupertinoLocalisationsDelegate old) => false;
-}
-
-class _DefaultCupertinoLocalizations extends DefaultCupertinoLocalizations {
-  final Locale locale;
-  
-  _DefaultCupertinoLocalizations(this.locale);
-
- 
+  bool shouldReload(TranslationsDelegate old) => false;
 }

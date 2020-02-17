@@ -1,32 +1,63 @@
 {
-  "@@last_modified": "2020-02-17T02:25:37.948077",
+  "@@locale" :   "en" ,
+  "@@last_modified": "2020-02-17T15:49:14.732437",
   "title": "Home",
   "@title": {
     "type": "text",
     "placeholders": {}
   },
-  "btnsubmit": "Submit",
-  "@btnsubmit": {
+  "username": "Username",
+  "@username": {
     "type": "text",
     "placeholders": {}
   },
-  "locale": "en",
-  "@locale": {
+  "not_valid_username": "Not Valid Username",
+  "@not_valid_username": {
     "type": "text",
     "placeholders": {}
   },
-  "lblname": "Name",
-  "@lblname": {
+  "password": "password",
+  "@password": {
     "type": "text",
     "placeholders": {}
   },
-  "lblphone": "Phone",
-  "@lblphone": {
+  "password_is_too_short": "password is too short",
+  "@password_is_too_short": {
     "type": "text",
     "placeholders": {}
   },
-  "lblemail": "Email",
-  "@lblemail": {
+  "login": "Login",
+  "@login": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "language": "عربي",
+  "@language": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "links": "Links",
+  "@links": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "contacts": "Contacts",
+  "@contacts": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "attendance": "Attendance",
+  "@attendance": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "support": "Support",
+  "@support": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profile": "Profile",
+  "@profile": {
     "type": "text",
     "placeholders": {}
   }

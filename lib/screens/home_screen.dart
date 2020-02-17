@@ -9,7 +9,7 @@ class HomeScreen extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Center(
-          child: Text(AppLocalizations.of(context).title),
+          child: Text(Translations.of(context).title),
         ),
       ),
     );

@@ -21,11 +21,17 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
-    "btnsubmit" : MessageLookupByLibrary.simpleMessage("Submit"),
-    "lblemail" : MessageLookupByLibrary.simpleMessage("Email"),
-    "lblname" : MessageLookupByLibrary.simpleMessage("Name"),
-    "lblphone" : MessageLookupByLibrary.simpleMessage("Phone"),
-    "locale" : MessageLookupByLibrary.simpleMessage("en"),
-    "title" : MessageLookupByLibrary.simpleMessage("Home")
+    "attendance" : MessageLookupByLibrary.simpleMessage("Attendance"),
+    "contacts" : MessageLookupByLibrary.simpleMessage("Contacts"),
+    "language" : MessageLookupByLibrary.simpleMessage("عربي"),
+    "links" : MessageLookupByLibrary.simpleMessage("Links"),
+    "login" : MessageLookupByLibrary.simpleMessage("Login"),
+    "not_valid_username" : MessageLookupByLibrary.simpleMessage("Not Valid Username"),
+    "password" : MessageLookupByLibrary.simpleMessage("password"),
+    "password_is_too_short" : MessageLookupByLibrary.simpleMessage("password is too short"),
+    "profile" : MessageLookupByLibrary.simpleMessage("Profile"),
+    "support" : MessageLookupByLibrary.simpleMessage("Support"),
+    "title" : MessageLookupByLibrary.simpleMessage("Home"),
+    "username" : MessageLookupByLibrary.simpleMessage("Username")
   };
 }
