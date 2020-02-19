@@ -40,7 +40,7 @@ class _TapsScreenState extends State<TapsScreen> {
   //   });
   // }
 
-  void _selectLang() {
+  void _selectLang() { 
     Provider.of<Lang>(context, listen: false).changeDirection();
   }
 
