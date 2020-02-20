@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
-// import 'package:shared_preferences/shared_preferences.dart';
-// import 'package:flutter/services.dart';
 import './providers/app_setting.dart';
-// import './providers/theme.dart';
 import './locale/locales.dart';
 import './screens/taps_screen.dart';
 
@@ -15,10 +12,7 @@ void main() async {
   runApp(MyApp(
     appLanguage: appLanguage,
   ));
-}
-
-// void main() => runApp(MyApp());
-          
+}          
 
 class MyApp extends StatelessWidget {
     final AppSetteing appLanguage;
@@ -26,18 +20,11 @@ class MyApp extends StatelessWidget {
   MyApp({this.appLanguage,this.appThem});
   @override
   Widget build(BuildContext context) {
-    // final theme = Provider.of<ThemeChanger>(context).getTheme();
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<AppSetteing>(
           create: (_) => appLanguage,
-          // child:  NewMaterialAppWithTheme(),
-          // lazy: true,
         ),
-        // ChangeNotifierProvider<ThemeChanger>(
-        //   create: (_) => ThemeChanger(),
-        //   child: new NewMaterialAppWithTheme(), 
-        // ),
       ],
         child: NewMaterialAppWithTheme(),
     );

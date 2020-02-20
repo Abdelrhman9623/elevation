@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-// import 'package:flutter_localizations/flutter_localizations.dart';
 import '../locale/locales.dart';
-import '../locale/helperLocale.dart';
 import '../providers/app_setting.dart';
 import '../screens/home_screen.dart';
 import '../screens/about_screen.dart';
