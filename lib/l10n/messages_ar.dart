@@ -23,7 +23,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static _notInlinedMessages(_) => <String, Function> {
     "attendance" : MessageLookupByLibrary.simpleMessage("Attendance"),
     "contacts" : MessageLookupByLibrary.simpleMessage("Contacts"),
-    "language" : MessageLookupByLibrary.simpleMessage("English"),
+    "language" : MessageLookupByLibrary.simpleMessage("En"),
     "links" : MessageLookupByLibrary.simpleMessage("Links"),
     "login" : MessageLookupByLibrary.simpleMessage("Login"),
     "not_valid_username" : MessageLookupByLibrary.simpleMessage("Not Valid Username"),

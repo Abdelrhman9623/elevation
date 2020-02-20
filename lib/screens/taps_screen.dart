@@ -51,7 +51,14 @@ class _TapsScreenState extends State<TapsScreen> {
         context: context,
         builder: (ctx) => AlertDialog(
           // backgroundColor: Colors.green[50].withOpacity(0.4),
-          title: Center(child: Text('Copyright')),
+          title: Center(
+            child: Text(
+              'Copyright', 
+              style: TextStyle(
+                color: Theme.of(context).primaryColor
+              ),
+            ),
+          ),
           content: Container(
             // padding: const EdgeInsets.all(8),
             child: Text(
@@ -79,15 +86,20 @@ class _TapsScreenState extends State<TapsScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('ELEVATION OF US'),
+        title: Text(Translations.of(context).title),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.copyright),
             onPressed: _copyRight,
           ),
-          MaterialButton(
+          FlatButton(
             onPressed: _selectLang,
-            child: Icon(Icons.language, color: Colors.white,) //Text(Translations.of(context).language),
+            child: Text(
+              Translations.of(context).language, 
+              style: TextStyle(color: Colors.white, 
+              fontSize: 25
+              ),
+            ), //Icon(Icons.language, color: Colors.white,),
           ),
         ],
       ),

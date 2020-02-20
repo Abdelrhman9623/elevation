@@ -70,7 +70,7 @@ class Translations {
 
   String get language {
     return Intl.message(
-      'عربي',
+      'ع ر',
       name: 'language',
     );
   }

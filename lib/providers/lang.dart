@@ -1,13 +1,11 @@
 import 'dart:ui';
 import 'dart:convert';
-import '../locale/locales.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 
 class Lang with ChangeNotifier {
   Locale _appLocale = Locale('en');
-
   Locale get appLocal => _appLocale ?? Locale("en");
   // void changeLanguage(Locale type) async {
   //   var prefs = await SharedPreferences.getInstance();
@@ -39,7 +37,7 @@ class Lang with ChangeNotifier {
     // print(userDate);
     notifyListeners();
   }
-    fetchLocale() async {
+  fetchLocale() async {
     var prefs = await SharedPreferences.getInstance();
     if (prefs.getString('userData') == null) {
       _appLocale = Locale('en');
