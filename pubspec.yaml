@@ -30,6 +30,7 @@ dependencies:
   image_picker: ^0.6.3+1
   email_validator: ^1.0.4
   phone_number: ^0.6.0+2 
+  google_fonts: ^0.3.9
 
 
   # The following adds the Cupertino Icons font to your application.

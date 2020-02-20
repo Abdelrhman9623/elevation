@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-// import '../constants/constants.dart';
+import '../constants/constants.dart';
 
 ThemeData light = ThemeData(
   brightness: Brightness.light,
-  primarySwatch: Colors.indigo,
-  accentColor: Colors.pink,
+  primarySwatch: Colors.grey,
+  accentColor: titleCOlor,
   scaffoldBackgroundColor: Color(0xfff1f1f1)
 );
 
 ThemeData dark = ThemeData(
   brightness: Brightness.dark,
-  primarySwatch: Colors.indigo,
-  accentColor: Colors.pink,
+  primarySwatch: Colors.grey,
+  accentColor: titleCOlor,
 );
 
 
@@ -23,6 +23,7 @@ class ThemeChanger with ChangeNotifier {
   final String key = "theme";
   SharedPreferences _prefs;
   bool _darkTheme;
+
 
   bool get darkTheme => _darkTheme;
   

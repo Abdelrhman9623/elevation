@@ -1,22 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 // import 'package:flutter_localizations/flutter_localizations.dart';
 import '../locale/locales.dart';
 import '../locale/helperLocale.dart';
-import '../providers/lang.dart';
+import '../providers/app_setting.dart';
 import '../screens/home_screen.dart';
 import '../screens/about_screen.dart';
 import '../screens/posts_screen.dart';
 import '../screens/profile_screen.dart';
+
+
+enum LangSetting {
+  En,
+  Ar
+}
+
 class TapsScreen extends StatefulWidget {
   @override
   _TapsScreenState createState() => _TapsScreenState();
 }
 
+
 class _TapsScreenState extends State<TapsScreen> {
     List<Map<String, Object>> _page;
     int _selectPageIndex = 0;
-    
+
+
 
   @override
   void initState() {
@@ -34,15 +44,6 @@ class _TapsScreenState extends State<TapsScreen> {
       _selectPageIndex = i;
     });
   }
-  // onLocaleChange(Locale local) {
-  //   setState(() {
-  //     // widget.specificLocaliztionDelegate = SpecificLocalizationDelegate(local);
-  //   });
-  // }
-
-  void _selectLang() { 
-    Provider.of<Lang>(context, listen: false).changeDirection();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +56,7 @@ class _TapsScreenState extends State<TapsScreen> {
             child: Text(
               'Copyright', 
               style: TextStyle(
-                color: Theme.of(context).primaryColor
+                color: Theme.of(context).primaryColor,
               ),
             ),
           ),
@@ -86,28 +87,47 @@ class _TapsScreenState extends State<TapsScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(Translations.of(context).title),
+        title: Text(
+          Translations.of(context).title, 
+          style: GoogleFonts.roboto(),
+        ),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.copyright),
             onPressed: _copyRight,
           ),
-          FlatButton(
-            onPressed: _selectLang,
-            child: Text(
-              Translations.of(context).language, 
-              style: TextStyle(color: Colors.white, 
-              fontSize: 25
+           PopupMenuButton(
+            onSelected: ( LangSetting selectValue ) {
+              setState(() {
+                if (selectValue == LangSetting.En) {
+                  Provider.of<AppSetteing>(context, listen: false).changeLanguage(Locale('en'));
+                } else {
+                  Provider.of<AppSetteing>(context, listen: false).changeLanguage(Locale('ar'));
+                }
+              });
+            },
+            icon: Icon(Icons.language),
+            padding: const EdgeInsets.all(0),
+            itemBuilder: (_) => [
+              PopupMenuItem(
+                child: Center(
+                  child: Text('English', textAlign: TextAlign.center,)
+                ),
+                value: LangSetting.En,
               ),
-            ), //Icon(Icons.language, color: Colors.white,),
+              PopupMenuItem(
+                child: Center(child: Text('عربي', textAlign: TextAlign.center,)),
+                value: LangSetting.Ar,
+              ),
+            ],
           ),
         ],
       ),
       body: _page[_selectPageIndex]['pages'],
       bottomNavigationBar: BottomNavigationBar(
           currentIndex: _selectPageIndex,
-          // type: BottomNavigationBarType.fixed,
-          // backgroundColor: Colors.green[900],
+          type: BottomNavigationBarType.fixed,
+          backgroundColor: Theme.of(context).primaryColor,
           selectedItemColor: Colors.white,
           iconSize: 30,
           items: [
@@ -115,23 +135,23 @@ class _TapsScreenState extends State<TapsScreen> {
               icon: Icon(Icons.home),
               // activeIcon: Icon(Icons.person_add),
               title: Text('Home'),
-              backgroundColor: Colors.green[300]
+              // backgroundColor: Colors.green[300]
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.info),
               title: Text('About'),
-              backgroundColor: Colors.green[400]
+              // backgroundColor: Colors.green[400]
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.send),
               title: Text('Post'),
-              backgroundColor: Colors.green[600]
+              // backgroundColor: Colors.green[600]
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.person),
               activeIcon: Icon(Icons.account_circle),
               title: Text('Profile'),
-              backgroundColor: Colors.green[900]
+              // backgroundColor: Colors.green[900]
             ),
           ],
           onTap: _selctPage,

@@ -3,50 +3,43 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 // import 'package:shared_preferences/shared_preferences.dart';
 // import 'package:flutter/services.dart';
-import './providers/lang.dart';
-import './providers/theme.dart';
+import './providers/app_setting.dart';
+// import './providers/theme.dart';
 import './locale/locales.dart';
 import './screens/taps_screen.dart';
 
 void main() async {
-  Lang appLanguage = Lang();
-  // ThemeChanger appTheme = ThemeChanger();
   WidgetsFlutterBinding.ensureInitialized();
+  AppSetteing appLanguage = AppSetteing();
   await appLanguage.fetchLocale();
   runApp(MyApp(
     appLanguage: appLanguage,
-    // appThem: appTheme,
   ));
 }
 
-// void main() => runApp(MThemeData(
-            //   primarySwatch: Colors.green,
-            // )yApp());
+// void main() => runApp(MyApp());
+          
 
 class MyApp extends StatelessWidget {
-    final Lang appLanguage;
-    final ThemeChanger appThem;
+    final AppSetteing appLanguage;
+    final AppSetteing appThem;
   MyApp({this.appLanguage,this.appThem});
   @override
   Widget build(BuildContext context) {
     // final theme = Provider.of<ThemeChanger>(context).getTheme();
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider<Lang>(
-          create: (_) => appLanguage, 
+        ChangeNotifierProvider<AppSetteing>(
+          create: (_) => appLanguage,
+          // child:  NewMaterialAppWithTheme(),
+          // lazy: true,
         ),
-        ChangeNotifierProvider<ThemeChanger>(
-          create: (_) => ThemeChanger(),
-          child: new NewMaterialAppWithTheme(), 
-        ),
+        // ChangeNotifierProvider<ThemeChanger>(
+        //   create: (_) => ThemeChanger(),
+        //   child: new NewMaterialAppWithTheme(), 
+        // ),
       ],
-        child: Consumer<Lang>(
-          builder: (ctx, lang, child) {
-            return NewMaterialAppWithTheme(
-              lang: lang,
-            );
-          } 
-        ),
+        child: NewMaterialAppWithTheme(),
     );
   }
 }
@@ -57,9 +50,7 @@ class NewMaterialAppWithTheme extends StatelessWidget {
   NewMaterialAppWithTheme({this.lang, this.theme});
   @override
   Widget build(BuildContext context) {
-    // final theme = Provider.of<ThemeChanger>(context);
-    return Consumer<ThemeChanger>(
-      builder: (ctx, ThemeChanger theme, child) {
+    final setteing = Provider.of<AppSetteing>(context);
         return MaterialApp(
           localizationsDelegates: [
             // AppLocalizationsDelegate(),
@@ -71,17 +62,14 @@ class NewMaterialAppWithTheme extends StatelessWidget {
           const Locale('ar', ""),
           const Locale('en', ""),
           ],
-          locale: lang.appLocal,
+          locale: setteing.appLocal,
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
-          theme: theme.darkTheme ? dark : light,
+          theme: setteing.darkTheme ? dark : light,
           home: TapsScreen(),
           // routes: {
           //   ProfileScreen.routeName: (ctx) => ProfileScreen(),
           // },
         ); 
-      },
-    );
   }
 }
-
