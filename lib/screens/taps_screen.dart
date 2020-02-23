@@ -7,12 +7,7 @@ import '../screens/home_screen.dart';
 import '../screens/about_screen.dart';
 import '../screens/posts_screen.dart';
 import '../screens/profile_screen.dart';
-
-
-enum LangSetting {
-  En,
-  Ar
-}
+import '../widgets/units/softButton.dart';
 
 class TapsScreen extends StatefulWidget {
   @override
@@ -41,6 +36,10 @@ class _TapsScreenState extends State<TapsScreen> {
     setState(() {
       _selectPageIndex = i;
     });
+  }
+
+  void _selectLang() {
+    Provider.of<AppSetteing>(context, listen: false).changeDirection();
   }
 
   @override
@@ -84,44 +83,28 @@ class _TapsScreenState extends State<TapsScreen> {
     }
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          Translations.of(context).title, 
-          style: GoogleFonts.roboto(),
-        ),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.copyright),
-            onPressed: _copyRight,
-          ),
-           PopupMenuButton(
-            onSelected: ( LangSetting selectValue ) {
-              setState(() {
-                if (selectValue == LangSetting.En) {
-                  Provider.of<AppSetteing>(context, listen: false).changeLanguage(Locale('en'));
-                } else {
-                  Provider.of<AppSetteing>(context, listen: false).changeLanguage(Locale('ar'));
-                }
-              });
-            },
-            icon: Icon(Icons.language),
-            padding: const EdgeInsets.all(0),
-            itemBuilder: (_) => [
-              PopupMenuItem(
-                child: Center(
-                  child: Text('English', textAlign: TextAlign.center,)
-                ),
-                value: LangSetting.En,
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: <Widget>[
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  // IconButtonBase(
+                  //   button: Icon(Icons.language),
+                  // ),
+                  Text(Translations.of(context).title),
+                  // IconButtonBase(
+                  //   button: Icon(Icons.copyright),
+                  // ),
+                ],
               ),
-              PopupMenuItem(
-                child: Center(child: Text('عربي', textAlign: TextAlign.center,)),
-                value: LangSetting.Ar,
-              ),
+              _page[_selectPageIndex]['pages']
             ],
           ),
-        ],
+        ),
       ),
-      body: _page[_selectPageIndex]['pages'],
       bottomNavigationBar: BottomNavigationBar(
           currentIndex: _selectPageIndex,
           type: BottomNavigationBarType.fixed,

@@ -1,3 +1,4 @@
+import './screens/intro_screens/welcome_Screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
@@ -53,7 +54,7 @@ class NewMaterialAppWithTheme extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
           theme: setteing.darkTheme ? dark : light,
-          home: TapsScreen(),
+          home: WelcomeScreen(),
           // routes: {
           //   ProfileScreen.routeName: (ctx) => ProfileScreen(),
           // },

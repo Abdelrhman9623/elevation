@@ -7,6 +7,7 @@ Color btnColor = Color(0XFF333333);
 Color titleCOlor = Color(0XFFA9A9A9);
 Color prageCOlor = Colors.white;
 Color iconCOlor = Color(0XFF00A572);
+Color shadowColor = Color(0XFFf1f2f6);
 // Dark Theme
 Color backgroudColorDark = Color(0XFFA9A9A9);
 Color btnColorDark = Colors.white;

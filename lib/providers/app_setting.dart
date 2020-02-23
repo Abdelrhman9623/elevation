@@ -1,19 +1,18 @@
 import 'dart:ui';
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../constants/constants.dart';
 
 ThemeData light = ThemeData(
     brightness: Brightness.light,
-    primarySwatch: Colors.grey,
+    primarySwatch: Colors.blue,
     accentColor: titleCOlor,
     scaffoldBackgroundColor: Color(0xfff1f1f1)
   );
 
   ThemeData dark = ThemeData(
     brightness: Brightness.dark,
-    primarySwatch: Colors.grey,
+    primarySwatch: Colors.blue,
     accentColor: titleCOlor,
   );
 
@@ -33,52 +32,40 @@ class AppSetteing with ChangeNotifier {
       return Null;
     }
     _appLocale = Locale(prefs.getString('userData'));
-    // // _appLocale = Locale('ar');
-    // print(_appLocale);
     return Null;
-
   }
   
 //  CONTROLLING OF LANGUAGE OF APP
-  // Future<void> changeDirection() async {
-  //   var prefs = await SharedPreferences.getInstance();
-  //   if (_appLocale == Locale("ar")) {
-  //     _appLocale = Locale("en");
-  //     final userDate = json.encode({
-  //       'language': _appLocale.toLanguageTag()
-  //      });
-  //      prefs.setString('userData', userDate);
-  //       print(userDate);
-  //   } else {
-  //     _appLocale = Locale("ar");
-  //     final userDate = json.encode({
-  //       'language': _appLocale.toLanguageTag()
-  //      });
-  //      prefs.setString('userData', userDate);
-  //      print(userDate);
-  //   }
-  //   // final userDate = json.encode({
-  //   //   'language': _appLocale.toLanguageTag()
-  //   // });
-  //   notifyListeners();
-  // }
-
-  void changeLanguage(Locale type) async {
+  Future<void> changeDirection() async {
     var prefs = await SharedPreferences.getInstance();
-    if (_appLocale == type) {
-      return;
-    }
-    if (type == Locale("ar")) {
-      _appLocale = Locale("ar");
-      await prefs.setString('userData', 'ar');
-      await prefs.setString('countryCode', '');
-    } else {
+    if (_appLocale == Locale("ar")) {
       _appLocale = Locale("en");
       await prefs.setString('userData', 'en');
       await prefs.setString('countryCode', 'US');
+    } else {
+      _appLocale = Locale("ar");
+      await prefs.setString('userData', 'ar');
+      await prefs.setString('countryCode', '');
     }
     notifyListeners();
   }
+
+  // void changeLanguage(Locale type) async {
+  //   var prefs = await SharedPreferences.getInstance();
+  //   if (_appLocale == type) {
+  //     return;
+  //   }
+  //   if (type == Locale("ar")) {
+  //     _appLocale = Locale("ar");
+  //     await prefs.setString('userData', 'ar');
+  //     await prefs.setString('countryCode', '');
+  //   } else {
+  //     _appLocale = Locale("en");
+  //     await prefs.setString('userData', 'en');
+  //     await prefs.setString('countryCode', 'US');
+  //   }
+  //   notifyListeners();
+  // }
 
 
   // SET OUR THEME
@@ -110,7 +97,3 @@ class AppSetteing with ChangeNotifier {
   }
 
 }
-
-
-
-  
