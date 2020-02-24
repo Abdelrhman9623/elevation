@@ -5,16 +5,18 @@ import '../constants/constants.dart';
 
 ThemeData light = ThemeData(
     brightness: Brightness.light,
-    primarySwatch: Colors.blue,
+    primaryColor: backgroudColorLight,
     accentColor: titleCOlor,
-    scaffoldBackgroundColor: Color(0xfff1f1f1)
+    scaffoldBackgroundColor: backgroudColorDark,
   );
 
-  ThemeData dark = ThemeData(
-    brightness: Brightness.dark,
-    primarySwatch: Colors.blue,
-    accentColor: titleCOlor,
-  );
+ThemeData dark = ThemeData(
+  brightness: Brightness.dark,
+  primaryColor: backgroudColorDark,
+  accentColor: titleCOlor,
+  // scaffoldBackgroundColor: backgroudColorDark,
+  // scaffoldBackgroundColor: Color(0xfff1f1f1)
+);
 
 class AppSetteing with ChangeNotifier {
   final String key = "theme";
