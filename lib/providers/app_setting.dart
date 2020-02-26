@@ -1,22 +1,74 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../constants/constants.dart';
 
 ThemeData light = ThemeData(
     brightness: Brightness.light,
-    primaryColor: backgroudColorLight,
-    accentColor: titleCOlor,
-    scaffoldBackgroundColor: backgroudColorDark,
+    primaryColor: appbglight,
+    accentColor: postCard,
+    scaffoldBackgroundColor: appbglight,
+    iconTheme: IconThemeData(
+      color: iconColor,
+    ),
+    textTheme: TextTheme(
+      title: GoogleFonts.montserrat(
+        color: titleColor,
+        wordSpacing: 3,
+        letterSpacing: 3,
+        fontSize: 25,
+        fontWeight: FontWeight.w400,
+      ),
+      subtitle: GoogleFonts.roboto(
+        fontSize: 23,
+        color: Colors.white
+      ),
+      button: GoogleFonts.robotoMono(
+        color: Color(0XFF88C94E),
+        wordSpacing: 1,
+        fontSize: 23,
+        fontWeight: FontWeight.bold,
+      ),
+      caption: GoogleFonts.roboto(
+        color: titleColor,
+        fontSize: 18,
+      ),
+    ),
   );
 
 ThemeData dark = ThemeData(
-  brightness: Brightness.dark,
-  primaryColor: backgroudColorDark,
-  accentColor: titleCOlor,
-  // scaffoldBackgroundColor: backgroudColorDark,
-  // scaffoldBackgroundColor: Color(0xfff1f1f1)
-);
+    brightness: Brightness.light,
+    primaryColor: appbgDark,
+    // accentColor: titleCOlor,
+    scaffoldBackgroundColor: appbgDark,
+    iconTheme: IconThemeData(
+      color: iconColor,
+    ),
+    textTheme: TextTheme(
+      title: GoogleFonts.montserrat(
+        color: Color(0XFF3B3E48),
+        wordSpacing: 1,
+        letterSpacing: 3,
+        fontSize: 25,
+        fontWeight: FontWeight.w400,
+      ),
+      subtitle: GoogleFonts.roboto(
+        fontSize: 23,
+        color: Color(0XFF2B2D35)
+      ),
+      button: GoogleFonts.robotoMono(
+        color: Color(0XFF88C94E),
+        wordSpacing: 1,
+        fontSize: 23,
+        fontWeight: FontWeight.bold,
+      ),
+      caption: GoogleFonts.roboto(
+        color: Color(0XFF2B2D35),
+        fontSize: 18,
+      ),
+    ),
+  );
 
 class AppSetteing with ChangeNotifier {
   final String key = "theme";

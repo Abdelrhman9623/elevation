@@ -1,17 +1,16 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 
-// Light Theme
-Color backgroudColorLight = Color(0XFFD3D3D3);
-Color btnColor = Color(0XFF333333);
-Color titleCOlor = Color(0XFFA9A9A9);
-Color prageCOlor = Colors.white;
-Color iconCOlor = Color(0XFF00A572);
-Color shadowColor = Color(0XFFf1f2f6);
-// Dark Theme
-Color backgroudColorDark = Color(0XFFA9A9A9);
-Color btnColorDark = Colors.white;
-Color titleCOlorDark = Color(0XFFD3D3D3);
-Color prageCOlorDark = Colors.white;
-Color iconCOlorDark = Color(0XFF9dc183);
+// LIGHT THEME
+Color headLinebg = Color(0XFF0090ce); 
+Color logInbg = Color(0XFFFDC436); 
+Color appbglight = Color(0XFF84b5e6);
+Color btnBgColor = Color(0XFF273833);
+Color iconColor = Color(0XFFbec3c9);
+Color titleColor = Colors.white;
+Color subtitleColor = Color(0XFF707482);
+Color postCard = Colors.teal;
+
+// DARK THEME
+Color appbgDark = Color(0XFF0a6c96);
 

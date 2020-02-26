@@ -1,3 +1,4 @@
+import '../../constants/constants.dart';
 import 'package:flutter/material.dart';
 class SoftFlatButton extends StatelessWidget {
   double height;
@@ -16,7 +17,7 @@ class SoftFlatButton extends StatelessWidget {
       height: height,
       width: width,
       decoration: BoxDecoration(
-        color: Theme.of(context).accentColor,
+        color: btnBgColor.withOpacity(0.9),
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(20),
           topRight: Radius.circular(20),

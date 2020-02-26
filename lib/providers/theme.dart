@@ -5,14 +5,14 @@ import '../constants/constants.dart';
 ThemeData light = ThemeData(
   brightness: Brightness.light,
   primarySwatch: Colors.grey,
-  accentColor: titleCOlor,
+  // accentColor: titleCOlor,
   scaffoldBackgroundColor: Color(0xfff1f1f1)
 );
 
 ThemeData dark = ThemeData(
   brightness: Brightness.dark,
   primarySwatch: Colors.grey,
-  accentColor: titleCOlor,
+  // accentColor: titleCOlor,
 );
 
 

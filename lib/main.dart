@@ -54,8 +54,8 @@ class NewMaterialAppWithTheme extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
           theme: setteing.darkTheme ? dark : light,
-          home: WelcomeScreen() //TapsScreen() ,
-          // home: TapsScreen() ,
+          // home: WelcomeScreen() //TapsScreen() ,
+          home: TapsScreen() ,
           // routes: {
           //   ProfileScreen.routeName: (ctx) => ProfileScreen(),
           // },

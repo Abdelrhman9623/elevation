@@ -1,5 +1,6 @@
+import 'package:elevation/constants/constants.dart';
+import 'package:elevation/widgets/bottom_bar_item.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import '../locale/locales.dart';
 import '../providers/app_setting.dart';
@@ -8,6 +9,7 @@ import '../screens/about_screen.dart';
 import '../screens/posts_screen.dart';
 import '../screens/profile_screen.dart';
 import '../widgets/units/softButton.dart';
+import '../widgets/mainAppBar.dart';
 
 class TapsScreen extends StatefulWidget {
   @override
@@ -16,14 +18,12 @@ class TapsScreen extends StatefulWidget {
 
 
 class _TapsScreenState extends State<TapsScreen> {
-    List<Map<String, Object>> _page;
-    int _selectPageIndex = 0;
-
-
+    List<Map<String, Object>> page;
+    int selectPageIndex = 0;
 
   @override
   void initState() {
-    _page = [
+    page = [
       { 'pages': HomeScreen(), },
       { 'pages': AboutScreen(), },
       { 'pages': PostScreen(), },
@@ -32,9 +32,9 @@ class _TapsScreenState extends State<TapsScreen> {
     super.initState();
   }
 
-  void _selctPage(int i) {
+  void selctPage(int i) {
     setState(() {
-      _selectPageIndex = i;
+      selectPageIndex = i;
     });
   }
 
@@ -83,60 +83,37 @@ class _TapsScreenState extends State<TapsScreen> {
     }
 
     return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: <Widget>[
-              Row(
+      body: ListView(
+        children: <Widget>[
+          MainAppBar(
+            title: Container(
+              padding: EdgeInsets.only(top: 16),
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  // IconButtonBase(
-                  //   button: Icon(Icons.language),
-                  // ),
-                  Text(Translations.of(context).title),
-                  // IconButtonBase(
-                  //   button: Icon(Icons.copyright),
-                  // ),
+                  Text(
+                    Translations.of(context).title,
+                    style: Theme.of(context).textTheme.title, 
+                  ),
+                  IconButtonBase(
+                    button: IconButton(
+                      color: Theme.of(context).iconTheme.color,
+                      icon: Icon(Icons.copyright),
+                      iconSize: 32,
+                      onPressed: _copyRight,
+                    ),
+                  ),
                 ],
               ),
-              _page[_selectPageIndex]['pages']
-            ],
+            ),
           ),
-        ),
+          page[selectPageIndex]['pages']
+        ],
       ),
-      bottomNavigationBar: BottomNavigationBar(
-          currentIndex: _selectPageIndex,
-          type: BottomNavigationBarType.fixed,
-          backgroundColor: Theme.of(context).primaryColor,
-          selectedItemColor: Colors.white,
-          iconSize: 30,
-          items: [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              // activeIcon: Icon(Icons.person_add),
-              title: Text('Home'),
-              // backgroundColor: Colors.green[300]
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.info),
-              title: Text('About'),
-              // backgroundColor: Colors.green[400]
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.send),
-              title: Text('Post'),
-              // backgroundColor: Colors.green[600]
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              activeIcon: Icon(Icons.account_circle),
-              title: Text('Profile'),
-              // backgroundColor: Colors.green[900]
-            ),
-          ],
-          onTap: _selctPage,
-        ),
+      bottomNavigationBar: MainBottomNavBar(
+        selectPageIndex: selectPageIndex,
+        selctPage: selctPage,
+      ),
     );
   }
 }
