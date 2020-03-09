@@ -7,30 +7,34 @@ import '../constants/constants.dart';
 ThemeData light = ThemeData(
     brightness: Brightness.light,
     primaryColor: appbglight,
-    accentColor: postCard,
+    accentColor: accentColor,
     scaffoldBackgroundColor: appbglight,
+    appBarTheme: AppBarTheme(
+      color: Colors.transparent
+    ),
     iconTheme: IconThemeData(
       color: iconColor,
+      size: 30,
     ),
     textTheme: TextTheme(
-      title: GoogleFonts.montserrat(
+      title: GoogleFonts.cairo(
         color: titleColor,
         wordSpacing: 3,
         letterSpacing: 3,
-        fontSize: 25,
-        fontWeight: FontWeight.w400,
+        fontSize: 30,
+        fontWeight: FontWeight.w700,
       ),
-      subtitle: GoogleFonts.roboto(
+      subtitle: GoogleFonts.cairo(
         fontSize: 23,
         color: Colors.white
       ),
-      button: GoogleFonts.robotoMono(
-        color: Color(0XFF88C94E),
+      button: GoogleFonts.cairo(
+        color: Colors.white,
         wordSpacing: 1,
-        fontSize: 23,
-        fontWeight: FontWeight.bold,
+        fontSize: 18,
+        // fontWeight: FontWeight.bold,
       ),
-      caption: GoogleFonts.roboto(
+      caption: GoogleFonts.cairo(
         color: titleColor,
         fontSize: 18,
       ),
@@ -40,31 +44,32 @@ ThemeData light = ThemeData(
 ThemeData dark = ThemeData(
     brightness: Brightness.light,
     primaryColor: appbgDark,
-    // accentColor: titleCOlor,
+    accentColor: accentColorDark,
     scaffoldBackgroundColor: appbgDark,
     iconTheme: IconThemeData(
-      color: iconColor,
+      color: iconColorDark,
+      size: 30,
     ),
     textTheme: TextTheme(
-      title: GoogleFonts.montserrat(
-        color: Color(0XFF3B3E48),
+      title: GoogleFonts.cairo(
+        color: Color(0XFFd0d3da),
         wordSpacing: 1,
         letterSpacing: 3,
         fontSize: 25,
         fontWeight: FontWeight.w400,
       ),
-      subtitle: GoogleFonts.roboto(
+      subtitle: GoogleFonts.cairo(
         fontSize: 23,
-        color: Color(0XFF2B2D35)
+        color: Color(0XFFd0d3da)
       ),
-      button: GoogleFonts.robotoMono(
+      button: GoogleFonts.cairo(
         color: Color(0XFF88C94E),
         wordSpacing: 1,
-        fontSize: 23,
-        fontWeight: FontWeight.bold,
+        fontSize: 18,
+        // fontWeight: FontWeight.bold,
       ),
-      caption: GoogleFonts.roboto(
-        color: Color(0XFF2B2D35),
+      caption: GoogleFonts.cairo(
+        color: Color(0XFFd0d3da),
         fontSize: 18,
       ),
     ),

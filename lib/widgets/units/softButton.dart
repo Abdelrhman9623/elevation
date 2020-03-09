@@ -17,11 +17,24 @@ class IconButtonBase extends StatelessWidget {
           width: radius * 2,
           height: radius * 2,
           decoration: BoxDecoration(
-            // color: titleColor,
-            borderRadius: BorderRadius.circular(15),
+            color: Theme.of(context).primaryColor.withOpacity(0.8),
+            // border: Border.all(
+            //   color: Color(0XFF59bee1), 
+            //   width: 3,
+            //   style: BorderStyle.solid
+            // ),
+            // borderRadius: BorderRadius.circular(radius),
             // boxShadow: [
-            //   BoxShadow( color: Theme.of(context).primaryColor, offset: Offset(8,6), blurRadius: 12 ),
-            //   BoxShadow( color: Colors.white, offset: Offset(-4,-4), blurRadius: 12 ),
+            //   BoxShadow( 
+            //     color: Theme.of(context).accentColor, 
+            //     offset: Offset(8,6), 
+            //     blurRadius: 12 
+            //   ),
+            //   BoxShadow( 
+            //     color: appbgDark, 
+            //     offset: Offset(-4,-6), 
+            //     blurRadius: 12, 
+            //   ),
             // ]
           ),
         ),

@@ -15,24 +15,9 @@ class MainAppBar extends StatelessWidget {
     final isPortrait = mediaQuery.orientation == Orientation.portrait;
     return Center(
       child: Container(
-        height: isLandScape ? deviceSize.height / 1 * 0.3 : deviceSize.height / 2 * 0.2,
+        height: isLandScape ? deviceSize.height / 1 * 0.3 : deviceSize.height / 2 * 0.3,
         width: double.infinity,
-        padding: EdgeInsets.symmetric(horizontal: 15),
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              appbglight,
-              appbgDark,
-            ],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-          ),
-          color: headLinebg,
-          borderRadius: BorderRadius.only(
-            bottomLeft:  Radius.circular(15),
-            bottomRight:  Radius.circular(15),
-          )
-        ),
+        padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
         child: title,
       ),
     );

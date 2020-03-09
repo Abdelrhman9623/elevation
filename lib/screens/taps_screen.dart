@@ -1,5 +1,4 @@
 import 'package:elevation/constants/constants.dart';
-import 'package:elevation/widgets/bottom_bar_item.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../locale/locales.dart';
@@ -10,12 +9,12 @@ import '../screens/posts_screen.dart';
 import '../screens/profile_screen.dart';
 import '../widgets/units/softButton.dart';
 import '../widgets/mainAppBar.dart';
+import '../widgets/bottom_bar_item.dart';
 
 class TapsScreen extends StatefulWidget {
   @override
   _TapsScreenState createState() => _TapsScreenState();
 }
-
 
 class _TapsScreenState extends State<TapsScreen> {
     List<Map<String, Object>> page;
@@ -24,24 +23,21 @@ class _TapsScreenState extends State<TapsScreen> {
   @override
   void initState() {
     page = [
-      { 'pages': HomeScreen(), },
+      { 'pages': HomeScreen(),},
       { 'pages': AboutScreen(), },
       { 'pages': PostScreen(), },
       { 'pages': ProfileScreen(), },
     ];
     super.initState();
   }
-
   void selctPage(int i) {
     setState(() {
       selectPageIndex = i;
     });
   }
-
-  void _selectLang() {
+    void _selectLang() {
     Provider.of<AppSetteing>(context, listen: false).changeDirection();
   }
-
   @override
   Widget build(BuildContext context) {
     Future<void> _copyRight() async {
@@ -81,39 +77,46 @@ class _TapsScreenState extends State<TapsScreen> {
         )
       );
     }
-
     return Scaffold(
-      body: ListView(
-        children: <Widget>[
-          MainAppBar(
-            title: Container(
-              padding: EdgeInsets.only(top: 16),
-              child: Row(
+      appBar: AppBar(
+        elevation: 6,
+        backgroundColor: Theme.of(context).primaryColor,
+        title: PreferredSize(
+          preferredSize: Size.fromHeight(75),
+          child: Container(
+            margin: const EdgeInsets.only(top: 5),
+            child: MainAppBar(
+              title: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Text(
                     Translations.of(context).title,
-                    style: Theme.of(context).textTheme.title, 
+                    style: Theme.of(context).textTheme.title,
                   ),
                   IconButtonBase(
                     button: IconButton(
-                      color: Theme.of(context).iconTheme.color,
-                      icon: Icon(Icons.copyright),
-                      iconSize: 32,
-                      onPressed: _copyRight,
+                      icon: Icon(
+                        Icons.account_circle, 
+                        color: Theme.of(context).iconTheme.color,
+                        size: Theme.of(context).iconTheme.size,
+                      ),
+                      onPressed: _selectLang,
                     ),
                   ),
                 ],
               ),
             ),
           ),
-          page[selectPageIndex]['pages']
-        ],
+        ),
       ),
-      bottomNavigationBar: MainBottomNavBar(
-        selectPageIndex: selectPageIndex,
-        selctPage: selctPage,
-      ),
+      body: SingleChildScrollView(
+          child: page[selectPageIndex]['pages'],
+        ), 
+        bottomNavigationBar: MainBottomNavBar(
+          selectPageIndex: selectPageIndex,
+          selctPage: selctPage,
+        ),
     );
   }
 }

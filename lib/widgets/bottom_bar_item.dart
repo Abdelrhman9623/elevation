@@ -8,8 +8,9 @@ class MainBottomNavBar extends StatelessWidget {
     return BottomNavigationBar(
           currentIndex: selectPageIndex,
           type: BottomNavigationBarType.fixed,
-          backgroundColor: Theme.of(context).primaryColor,
-          selectedItemColor: Colors.white,
+          backgroundColor: Theme.of(context).accentColor,
+          selectedItemColor: Theme.of(context).iconTheme.color,
+          showSelectedLabels: true,
           iconSize: 30,
           items: [
             BottomNavigationBarItem(

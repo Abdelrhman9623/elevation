@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 
 class Posts with ChangeNotifier {
   final String id;
+  final List<String> postCategories; 
   final String title;
   final String des;
   final String imageUrl;
@@ -9,11 +10,12 @@ class Posts with ChangeNotifier {
   bool visibil;
 
   Posts({
-    @required this.id,
-    @required this.title,
-    @required this.des,
-    @required this.imageUrl,
-    @required this.replay,
+    this.id,
+    this.postCategories,
+    this.title,
+    this.des,
+    this.imageUrl,
+    this.replay,
     this.visibil = true,
   });
 
