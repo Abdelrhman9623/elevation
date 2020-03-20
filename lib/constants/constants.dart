@@ -15,7 +15,7 @@ Color accentColor = Color(0xff3d73d7);
 // DARK THEME
 // Color appbgDark = Color(0XFF0a6c96);
 Color appbgDark = Color(0xff467282);
-Color iconColorDark = Color(0XFF06426e);
+Color iconColorDark = Color(0XFF588aaf);
 Color accentColorDark = Color(0xff3a4d71);
 
 // SHADOWS

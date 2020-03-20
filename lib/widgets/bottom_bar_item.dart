@@ -1,42 +1,62 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import './../screens/about_screen.dart';
+import './../screens/posts_screen.dart';
+import './../screens/profile_screen.dart';
+import './../widgets/units/softButton.dart';
 class MainBottomNavBar extends StatelessWidget {
-  final int selectPageIndex;
-  final Function selctPage;
-  MainBottomNavBar({this.selectPageIndex, this.selctPage});
   @override
   Widget build(BuildContext context) {
-    return BottomNavigationBar(
-          currentIndex: selectPageIndex,
-          type: BottomNavigationBarType.fixed,
-          backgroundColor: Theme.of(context).accentColor,
-          selectedItemColor: Theme.of(context).iconTheme.color,
-          showSelectedLabels: true,
-          iconSize: 30,
-          items: [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              // activeIcon: Icon(Icons.person_add),
-              title: Text('Home'),
-              // backgroundColor: Colors.green[300]
+    final mediaQuery = MediaQuery.of(context);
+    final deviceSize = mediaQuery.size;
+    final isLandScap = mediaQuery.orientation == Orientation.landscape;
+    return BottomAppBar(
+      color: Theme.of(context).accentColor,
+      child: Container(
+        height: isLandScap ? deviceSize.height / 2.7 * 0.5 : deviceSize.height / 2.3 * 0.2,
+        width: double.infinity,
+        padding: EdgeInsets.symmetric(horizontal: 20),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisSize: MainAxisSize.max,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            IconButtonBase(
+              button: IconButton(
+                icon: FaIcon(FontAwesomeIcons.home),
+                onPressed: () {
+                  Navigator.of(context).pushReplacementNamed('/');
+                },
+              ),
             ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.info),
-              title: Text('About'),
-              // backgroundColor: Colors.green[400]
+            IconButtonBase(
+              button: IconButton(
+                icon: FaIcon(FontAwesomeIcons.users),
+                onPressed: () {
+                  Navigator.of(context).pushReplacementNamed(AboutScreen.routeName);
+                },
+              ),
             ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.send),
-              title: Text('Post'),
-              // backgroundColor: Colors.green[600]
+            IconButtonBase(
+              button: IconButton(
+                icon: FaIcon(FontAwesomeIcons.heart),
+                onPressed: () {
+                  Navigator.of(context).pushReplacementNamed(PostScreen.routeName);
+                },
+              ),
             ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              activeIcon: Icon(Icons.account_circle),
-              title: Text('Profile'),
-              // backgroundColor: Colors.green[900]
+            IconButtonBase(
+              button: IconButton(
+                icon: FaIcon(FontAwesomeIcons.userCog),
+                onPressed: () {
+                  Navigator.of(context).pushReplacementNamed(ProfileScreen.routeName);
+                },
+              ),
             ),
           ],
-          onTap: selctPage,
-        );
+        ),
+      ),
+      shape: CircularNotchedRectangle(),
+    );
   }
 }

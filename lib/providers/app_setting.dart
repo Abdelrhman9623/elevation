@@ -1,4 +1,5 @@
 import 'dart:ui';
+import './../helper/custom_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -9,6 +10,12 @@ ThemeData light = ThemeData(
     primaryColor: appbglight,
     accentColor: accentColor,
     scaffoldBackgroundColor: appbglight,
+    pageTransitionsTheme: PageTransitionsTheme(
+      builders: {
+        TargetPlatform.android: CustomPageTransitionBuilder(),
+        TargetPlatform.iOS: CustomPageTransitionBuilder(),
+      }
+    ),
     appBarTheme: AppBarTheme(
       color: Colors.transparent
     ),
@@ -19,10 +26,10 @@ ThemeData light = ThemeData(
     textTheme: TextTheme(
       title: GoogleFonts.cairo(
         color: titleColor,
-        wordSpacing: 3,
+        wordSpacing: 1,
         letterSpacing: 3,
-        fontSize: 30,
-        fontWeight: FontWeight.w700,
+        fontSize: 25,
+        fontWeight: FontWeight.w400,
       ),
       subtitle: GoogleFonts.cairo(
         fontSize: 23,
@@ -46,6 +53,12 @@ ThemeData dark = ThemeData(
     primaryColor: appbgDark,
     accentColor: accentColorDark,
     scaffoldBackgroundColor: appbgDark,
+    pageTransitionsTheme: PageTransitionsTheme(
+      builders: {
+        TargetPlatform.android: CustomPageTransitionBuilder(),
+        TargetPlatform.iOS: CustomPageTransitionBuilder(),
+      }
+    ),
     iconTheme: IconThemeData(
       color: iconColorDark,
       size: 30,
@@ -153,6 +166,19 @@ class AppSetteing with ChangeNotifier {
   _saveToPrefs()async {
     await _initPrefs();
     _prefs.setBool(key, _darkTheme);
+  }
+
+  void showIfo(BuildContext ctx) {
+    showModalBottomSheet(
+      context: ctx,
+      builder: (ctx) => GestureDetector(
+        child: Card(
+          child: Text('hello !!'),
+        ),
+        onTap: () {},
+        behavior: HitTestBehavior.opaque,
+      )
+    );
   }
 
 }
