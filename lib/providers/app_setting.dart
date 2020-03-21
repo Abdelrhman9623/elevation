@@ -1,6 +1,8 @@
 import 'dart:ui';
+import 'dart:convert';
 import './../helper/custom_routes.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../constants/constants.dart';
@@ -166,19 +168,6 @@ class AppSetteing with ChangeNotifier {
   _saveToPrefs()async {
     await _initPrefs();
     _prefs.setBool(key, _darkTheme);
-  }
-
-  void showIfo(BuildContext ctx) {
-    showModalBottomSheet(
-      context: ctx,
-      builder: (ctx) => GestureDetector(
-        child: Card(
-          child: Text('hello !!'),
-        ),
-        onTap: () {},
-        behavior: HitTestBehavior.opaque,
-      )
-    );
   }
 
 }

@@ -4,10 +4,14 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import './../locale/locales.dart';
 import './../providers/app_setting.dart';
+import './../providers/auth.dart';
 import './../widgets/bottom_bar_item.dart';
 import './../widgets/post_Card.dart';
 class MainScreen extends StatelessWidget {
   static const routeName = '/';
+  Map<String, String> _authData = {
+    'bearer': ''
+  };
 
 
 
@@ -17,7 +21,7 @@ class MainScreen extends StatelessWidget {
       Provider.of<AppSetteing>(context, listen: false).changeDirection();
     }
     void _showProf() {
-      Provider.of<AppSetteing>(context, listen: false).showIfo(context);
+      Provider.of<Auth>(context, listen: false).showIfo(context);
     }
     return Scaffold(
       appBar: AppBar(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import './providers/app_setting.dart';
+import './providers/auth.dart';
 import './locale/locales.dart';
 import './screens/intro_screens/welcome_Screen.dart';
 import './screens/about_screen.dart';
@@ -26,6 +27,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
+        ChangeNotifierProvider.value(
+        value: Auth(),
+      ),
         ChangeNotifierProvider<AppSetteing>(
           create: (_) => appLanguage,
         ),
